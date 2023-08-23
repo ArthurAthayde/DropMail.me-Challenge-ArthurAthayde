@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  width: 99%;
+  margin: 0 auto;
+}
+
+.inbox_container {
+  max-width: 21rem;
+  height: 600px;
+  border: solid 1px #0075f24f;
+  width: 40%;
+
+  align-self: flex-start;
+}
+.email_container {
+  border: solid 1px #0075f24f;
+  width: 100%;
+}
+
+h2 {
+  padding: 10px;
+  border-bottom: solid 1px #0075f24f;
+}
