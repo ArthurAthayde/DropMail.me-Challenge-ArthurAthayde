@@ -1,9 +1,11 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: [],
-  theme: {
-    extend: {},
+export const content = ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"];
+export const theme = {
+  extend: {
+    content: {
+      copy: 'url("assets/copy-icon.svg")',
+      refresh: 'url("assets/refresh-icon.svg")',
+    },
   },
-  plugins: [],
-}
-
+};
+export const plugins = [];
