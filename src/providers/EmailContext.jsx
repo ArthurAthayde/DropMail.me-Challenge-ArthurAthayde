@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import axios from "axios";
 
 export const EmailContext = createContext({});
 
@@ -9,7 +10,7 @@ export const EmailProvider = ({ children }) => {
         const { sessionId } = req.body;
 
         const response = await axios.post(
-          "https://dropmail.me/api/graphql/dropauthexample",
+          "https://dropmail.me/api/graphql/k7XnVuO1YB",
           {
             query: `
                     query {
@@ -26,8 +27,8 @@ export const EmailProvider = ({ children }) => {
         );
 
         if (response.data?.data?.session) {
-          const emails = response.data.data.session.mails;
-          res.status(200).json({ emails });
+          const email = response.data.data.session.mails;
+          res.status(200).json({ email });
         }
       } catch (error) {
         console.error("Error:", error);
@@ -42,7 +43,7 @@ export const EmailProvider = ({ children }) => {
     if (req.method === "POST") {
       try {
         const response = await axios.post(
-          "https://dropmail.me/api/graphql/dropauthexample",
+          "https://dropmail.me/api/graphql/k7XnVuO1YB",
           {
             query: `
               mutation {
@@ -58,9 +59,8 @@ export const EmailProvider = ({ children }) => {
           }
         );
 
-        const sessionId = data.introduceSession.id;
-        const { data } = response.data;
-        const { addresses, expiresAt } = data.introduceSession;
+        const sessionId = response.data.data.introduceSession.id;
+        const { addresses, expiresAt } = response.data.data.introduceSession;
         const newEmail = addresses[0].address;
         const expirationTime = new Date(expiresAt).getTime();
 
@@ -75,7 +75,7 @@ export const EmailProvider = ({ children }) => {
   };
 
   return (
-    <EmailContext.Provider value={(emailContent, emailGenerate)}>
+    <EmailContext.Provider value={{ emailContent, emailGenerate }}>
       {children}
     </EmailContext.Provider>
   );
