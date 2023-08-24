@@ -18,12 +18,26 @@
 
 input {
   max-width: 450px;
-  width: 100%;
+  width: 70%;
   padding: 10px;
 }
 
 .refresh_container {
   display: flex;
-  gap: 10px;
+  gap: 4px;
+  align-items: flex-end;
   align-self: center;
+}
+
+.input_controler {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.copyIcon {
+  height: 20px;
+  background-position: center;
+  background-size: cover;
 }
